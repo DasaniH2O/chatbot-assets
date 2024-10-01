@@ -18,7 +18,7 @@
         render: 'bottom-right',
         stylesheets: [
             "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
-            "https://your-website.com/path/to/custom-chat-bubble.css" // Replace with the actual path to your CSS file
+            "https://cdn.jsdelivr.net/gh/DasaniH2O/chatbot-assets@main/custom-chat-bubble.css" // Replace with the actual path to your CSS file
         ],
         autostart: false
     };
