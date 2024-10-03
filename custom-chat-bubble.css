@@ -1,7 +1,13 @@
-.vg-widget-bubble {
+/* Hide the default Voiceglow bubble */
+.vg-widget-bubble,
+div[id^="vg-widget-bubble"] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
+/* Rest of your CSS remains the same */
 #custom-chat-bubble {
     position: fixed;
     bottom: 20px;
