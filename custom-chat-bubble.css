@@ -1,5 +1,6 @@
 /* custom-chat-bubble.css */
 #custom-chat-bubble {
+    z-index: 9999;
     position: fixed;
     bottom: 20px;
     right: 20px;
