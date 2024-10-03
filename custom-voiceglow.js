@@ -1,4 +1,3 @@
-// custom-voiceglow.js
 (function() {
     // Create and inject the custom chat bubble
     function injectChatBubble() {
@@ -18,7 +17,7 @@
         render: 'bottom-right',
         stylesheets: [
             "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
-            "https://cdn.jsdelivr.net/gh/DasaniH2O/chatbot-assets@main/custom-chat-bubble.css" // Replace with the actual path to your CSS file
+            "custom-chat-bubble.css" // Make sure this points to your CSS file
         ],
         autostart: false
     };
