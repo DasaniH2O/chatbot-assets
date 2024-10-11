@@ -1,8 +1,8 @@
 (function() {
     // Voiceglow configuration
     const VG_CONFIG = {
-        ID: "2thrnezcsbhwtjmu", // Make sure this is your correct Agent ID
-        region: 'na', // Ensure this is the correct region
+        ID: "2thrnezcsbhwtjmu",
+        region: 'na',
         render: 'bottom-right',
         stylesheets: [
             "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
@@ -29,12 +29,20 @@
         if (customBubble) {
             customBubble.addEventListener('click', function() {
                 console.log("Custom bubble clicked");
-                if (window.VG && typeof window.VG.open === 'function') {
-                    console.log("Attempting to open Voiceglow chat");
-                    window.VG.open();
-                    this.style.display = 'none';
+                if (window.VG) {
+                    if (typeof window.VG.open === 'function') {
+                        console.log("Attempting to open Voiceglow chat");
+                        window.VG.open();
+                        this.style.display = 'none';
+                    } else if (typeof window.VG.showWidget === 'function') {
+                        console.log("Attempting to show Voiceglow widget");
+                        window.VG.showWidget();
+                        this.style.display = 'none';
+                    } else {
+                        console.error("Voiceglow chat interface methods not found");
+                    }
                 } else {
-                    console.error("Voiceglow chat interface not available");
+                    console.error("Voiceglow object not found");
                 }
             });
             console.log('Event listener added to custom bubble');
@@ -68,9 +76,11 @@
         vgScript.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
         vgScript.onload = function() {
             console.log('Voiceglow script loaded');
-            const customBubble = injectChatBubble();
-            setupEventListeners(customBubble);
-            initializeVoiceglow();
+            setTimeout(() => {
+                const customBubble = injectChatBubble();
+                setupEventListeners(customBubble);
+                initializeVoiceglow();
+            }, 1000); // Delay initialization by 1 second
         };
         vgScript.onerror = function() {
             console.error('Failed to load Voiceglow script');
@@ -79,5 +89,9 @@
     }
 
     // Start the process
-    document.addEventListener('DOMContentLoaded', loadVoiceglow);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadVoiceglow);
+    } else {
+        loadVoiceglow();
+    }
 })();
