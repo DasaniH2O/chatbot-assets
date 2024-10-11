@@ -9,6 +9,7 @@ div[id^="vg-widget-bubble"],
 }
 
 #custom-chat-bubble {
+    pointer-events: auto !important;
     position: fixed;
     bottom: 20px;
     right: 20px;
