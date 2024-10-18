@@ -76,6 +76,7 @@ div[id^="vg-widget-bubble"],
 #VG_OVERLAY_CONTAINER {
   position: fixed;
   bottom: 120px;
+  border-radius: 30px;
   right: 20px;
   width: 400px;
   height: 500px;
